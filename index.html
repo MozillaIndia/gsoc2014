@@ -146,30 +146,32 @@
                                 <!-- Replace #collapse<Number> in the id= segment -->
                                 <div id="collapseFour" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <strong><u>Issues to be solved</u></strong><br>
+                                        <strong><u>Issues to be solved</u></strong><br><br>
                                         <ul>
                                             <li><code>./mach build</code> is slow</li>
                                             <li><code>hg qref</code> is slow</li>
                                             <li> <code>./mach build</code> does not always work when applied to a single file for incremental. Some js/xul files need a build of the folder or parent folder.</li>
                                         </ul>
+                                        <br>
                                         
-                                        <strong><u>Solution</u></strong><br>
+                                        <strong><u>Solution</u></strong><br><br>
                                         Using inotify or watchman, keep track of the files being changed in the source dirs.
                                         This can be done in two ways:
+                                        <br><br>
                                         <ul>
-                                            <li>Directly integrate it with mach and provide it with a mode where it reads the last-updated files from a log of the daemon. Possibly provide a separate but similar system for qref</li>
-                                            <li>Integrate it with qref (some partial solutions for this already exist), possibly as a Mercurial extension. Now, make hg read the files to be changed from the active patch. This only deals with changes being added, if a patch is popped or a change is removed from a patch, there needs to be a mechanism to notice this as well</li>
+                                            <li> Directly integrate it with mach and provide it with a mode where it reads the last-updated files from a log of the daemon. Possibly provide a separate but similar system for qref</li>
+                                            <li> Or, integrate it with qref (some partial solutions for this already exist), possibly as a Mercurial extension. Now, make hg read the files to be changed from the active patch. This only deals with changes being added, if a patch is popped or a change is removed from a patch, there needs to be a mechanism to notice this as well</li>
                                         </ul>
-                                        
+                                        <br>
                                         This will also require the improvement of mach so that it knows whe to build a file and when to build a folder. Generally js and xul builds have to be done at the folder level.
                                         
-                                        
+                                        <br>
                                         Additional speed and usability improvements to the patching system can be done as well.
+                                        <br>
+                                        <strong><u>Benefit</u></strong> <br>Faster patching, building, and testing, thus saving time.
                                         
-                                        <strong><u>Benefit:</u></strong> Faster patching, building, and testing, thus saving time.
                                         
-                                        
-                                        
+                                        <br><br>
                                         Original idea credit: @ckitching
                                     </div>
                                     
